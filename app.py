@@ -32,11 +32,6 @@ def predict_datapoint():
         predict_pipeline = PredictPipeline()
         pred = predict_pipeline.predict(final_new_data)
         
-        if pred == 0:
-            pred == "Bad Quality"
-        else:
-            pred == "Good Quality"
-        
         results = pred
         
         return render_template("result.html", final_result=results)

@@ -24,7 +24,7 @@ class DataIngestion:
         logging.info("Data ingestion method started")
         try:
             df = pd.read_csv(os.path.join("notebooks/data","red_wine_quality.csv"))
-            df['quality'] = df['quality'].apply(lambda x: 'good' if x > 5.5 else 'bad')
+            df['quality'] = df['quality'].apply(lambda x: 1 if x > 5.5 else 0)
             df.drop_duplicates(inplace=True)
             logging.info("Dataset readed by Pandas")
             

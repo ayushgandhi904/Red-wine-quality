@@ -23,7 +23,7 @@ class DataTransformation:
         try:
             logging.info("Data Transformation initiated")
             num_cols = ["fixed acidity", "volatile acidity", "citric acid", "residual sugar", "chlorides", "free sulfur dioxide", "total sulfur dioxide", "density", "pH", "sulphates", "alcohol"]
-            target_cols = ["quality"]  
+            #target_cols = ["quality"]  
             
             #Numerical Pipeline
             
@@ -37,17 +37,16 @@ class DataTransformation:
                 ]
             ) 
             
-            #Label pipeline 
-            lab_pipeline = Pipeline(
-                steps = [
-                    ("imputer", SimpleImputer(strategy = "most_frequent")),
-                    ("labelencoder", LabelEncoder())
-                ]
-            ) 
+            # #Label pipeline 
+            # lab_pipeline = Pipeline(
+            #     steps = [
+            #         ("imputer", SimpleImputer(strategy = "most_frequent")),
+            #         ("labelencoder", LabelEncoder())
+            #     ]
+            # ) 
 
             preprocessor = ColumnTransformer([
-                ("num_pipeline", num_pipeline, num_cols),
-                ("lab_pipeline", lab_pipeline, target_cols)
+                ("num_pipeline", num_pipeline, num_cols)
             ])
             
             return preprocessor
